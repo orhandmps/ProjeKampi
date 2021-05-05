@@ -14,15 +14,5 @@ namespace ProjeKampi.Controllers
             return View();
         }
 
-        void test(Category category)
-        {
-            using (var context = new Context())
-            {
-                if (string.IsNullOrWhiteSpace(category.name) rerun kaydetme;
-
-                context.Categories.add(context);
-                context.save();
-            }
-        }
     }
 }
