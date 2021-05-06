@@ -11,7 +11,7 @@ namespace ProjeKampi.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View();
+            return View("");
         }
 
     }
