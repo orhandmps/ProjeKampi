@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class m001 : DbMigration
+    public partial class m01 : DbMigration
     {
         public override void Up()
         {
@@ -67,21 +67,6 @@
                 .PrimaryKey(t => t.WriterId);
             
             CreateTable(
-                "dbo.Contacts",
-                c => new
-                    {
-                        ContectId = c.Int(nullable: false, identity: true),
-                        UserName = c.String(maxLength: 50),
-                        UserMail = c.String(maxLength: 50),
-                        Subject = c.String(maxLength: 50),
-                        Message = c.String(maxLength: 1000),
-                        Writer_WriterId = c.Int(),
-                    })
-                .PrimaryKey(t => t.ContectId)
-                .ForeignKey("dbo.Writers", t => t.Writer_WriterId)
-                .Index(t => t.Writer_WriterId);
-            
-            CreateTable(
                 "dbo.Contents",
                 c => new
                     {
@@ -97,26 +82,36 @@
                 .Index(t => t.HeadingId)
                 .Index(t => t.WriterId);
             
+            CreateTable(
+                "dbo.Contacts",
+                c => new
+                    {
+                        ContectId = c.Int(nullable: false, identity: true),
+                        UserName = c.String(maxLength: 50),
+                        UserMail = c.String(maxLength: 50),
+                        Subject = c.String(maxLength: 50),
+                        Message = c.String(maxLength: 1000),
+                    })
+                .PrimaryKey(t => t.ContectId);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Contents", "WriterId", "dbo.Writers");
-            DropForeignKey("dbo.Contents", "HeadingId", "dbo.Headings");
             DropForeignKey("dbo.Headings", "Category_CategoryId1", "dbo.Categories");
             DropForeignKey("dbo.Headings", "WriterId", "dbo.Writers");
-            DropForeignKey("dbo.Contacts", "Writer_WriterId", "dbo.Writers");
+            DropForeignKey("dbo.Contents", "WriterId", "dbo.Writers");
+            DropForeignKey("dbo.Contents", "HeadingId", "dbo.Headings");
             DropForeignKey("dbo.Categories", "Heading_HeadingId", "dbo.Headings");
             DropForeignKey("dbo.Headings", "Category_CategoryId", "dbo.Categories");
             DropIndex("dbo.Contents", new[] { "WriterId" });
             DropIndex("dbo.Contents", new[] { "HeadingId" });
-            DropIndex("dbo.Contacts", new[] { "Writer_WriterId" });
             DropIndex("dbo.Headings", new[] { "Category_CategoryId1" });
             DropIndex("dbo.Headings", new[] { "Category_CategoryId" });
             DropIndex("dbo.Headings", new[] { "WriterId" });
             DropIndex("dbo.Categories", new[] { "Heading_HeadingId" });
-            DropTable("dbo.Contents");
             DropTable("dbo.Contacts");
+            DropTable("dbo.Contents");
             DropTable("dbo.Writers");
             DropTable("dbo.Headings");
             DropTable("dbo.Categories");

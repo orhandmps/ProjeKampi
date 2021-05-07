@@ -23,11 +23,11 @@ namespace Entity.Concrate
         public string WriterPassWord { get; set; }
 
         public ICollection<Heading> Headings { get; set; }
-        public ICollection<Contact> Contects { get; set; }
+        public ICollection<Content> Contents { get; set; }
         public Writer()
         {
             Headings = new HashSet<Heading>();
-            Contects = new HashSet<Contact>();
+            Contents = new HashSet<Content>();
         }
 
 
