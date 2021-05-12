@@ -62,9 +62,15 @@
     <Compile Include="Concrate\Context.cs" />
     <Compile Include="Concrate\Repositories\CategoryRepository.cs" />
     <Compile Include="Concrate\Repositories\GenericRepository.cs" />
-    <Compile Include="Migrations\202105070106511_m01.cs" />
-    <Compile Include="Migrations\202105070106511_m01.designer.cs">
-      <DependentUpon>202105070106511_m01.cs</DependentUpon>
+    <Compile Include="EntityFramework\EFAboutDal.cs" />
+    <Compile Include="EntityFramework\EFCantactDal.cs" />
+    <Compile Include="EntityFramework\EFCategoryDal.cs" />
+    <Compile Include="EntityFramework\EFContentDal.cs" />
+    <Compile Include="EntityFramework\EFHeadingDal.cs" />
+    <Compile Include="EntityFramework\EFWriterDal.cs" />
+    <Compile Include="Migrations\202105070134213_m01.cs" />
+    <Compile Include="Migrations\202105070134213_m01.designer.cs">
+      <DependentUpon>202105070134213_m01.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,8 +86,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202105070106511_m01.resx">
-      <DependentUpon>202105070106511_m01.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105070134213_m01.resx">
+      <DependentUpon>202105070134213_m01.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

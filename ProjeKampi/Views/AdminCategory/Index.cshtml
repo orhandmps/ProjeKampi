@@ -1,0 +1,40 @@
+﻿@using Entity.Concrate
+@model List<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ad</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Başlıklar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+        }
+        @foreach (var x in Model)
+        {
+            <tr>
+                <th>
+                    @{
+                        i = i + 1;
+                    } @i
+                </th>
+                <td>@x.CategoryName</td>
+                <td><a href="/AdminCategory/DeleteCategory/@x.CategoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/AdminCategory/UpdateCategory/@x.CategoryId" class="btn btn-info">Güncelle</a></td>
+                <td><a href="#" class="btn btn-success">Başlıklar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/AdminCategory/AddCategory/" class="btn btn-primary">Kategori Ekle</a>

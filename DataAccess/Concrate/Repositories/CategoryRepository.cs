@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrate.Repositories
 {
-    public class CategoryRepository : IRepository<Category>
+    public class CategoryRepository : IRepository<Category> 
     {
         Context cnt = new Context();
         DbSet<Category> _object;
@@ -19,6 +19,11 @@ namespace DataAccess.Concrate.Repositories
         {
             _object.Remove(p);
             cnt.SaveChanges();
+        }
+
+        public Category Get(Expression<Func<Category, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public void Insert(Category p)

@@ -24,11 +24,6 @@ namespace Entity.Concrate
 
         public ICollection<Heading> Headings { get; set; }
         public ICollection<Content> Contents { get; set; }
-        public Writer()
-        {
-            Headings = new HashSet<Heading>();
-            Contents = new HashSet<Content>();
-        }
 
 
     }

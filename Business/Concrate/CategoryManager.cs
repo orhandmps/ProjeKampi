@@ -1,4 +1,6 @@
-﻿using DataAccess.Concrate.Repositories;
+﻿using Business.Abstract;
+using DataAccess.Abstract;
+using DataAccess.Concrate.Repositories;
 using Entity.Concrate;
 using System;
 using System.Collections.Generic;
@@ -8,25 +10,38 @@ using System.Threading.Tasks;
 
 namespace Business.Concrate
 {
-    public class CategoryMenager
+    public class CategoryMenager : ICategoryServ
     {
-        GenericRepository<Category> repo = new GenericRepository<Category>();
+        ICategoryDal _categorydal;
 
-        public List<Category> GetAllB()
+        public CategoryMenager(ICategoryDal categorydal)
         {
-            return repo.List();
+            _categorydal = categorydal;
         }
 
-        public void CategoryAddB(Category p)
+        public void CategoryDelete(Category category)
         {
-            if (p.CategoryName=="" || p.CategoryName.Length<=3 || p.CategoryDescription=="" || p.CategoryName.Length>=51)
-            {
-                //hata mesajı
-            }
-            else
-            {
-                repo.Insert(p);
-            }
+            _categorydal.Delete(category);
+        }
+
+        public void CategoryUpdate(Category category)
+        {
+            _categorydal.Update(category);
+        }
+
+        public Category GetById(int id)
+        {
+            return _categorydal.Get(x => x.CategoryId == id);
+        }
+
+        public List<Category> GetList()
+        {
+            return _categorydal.List();
+        }
+
+        public void Insert(Category p)
+        {
+            _categorydal.Insert(p);
         }
     }
 }
